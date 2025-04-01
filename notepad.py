@@ -126,7 +126,7 @@ def update_status_bar(event=None):
     line, column = map(int, cursor_position.split("."))
     text_content = text_area.get("1.0", "end-1c")
     char_count = len(text_content)
-    left_text = f"Строка {line}, столбец {column}   |   {char_count} символов"
+    left_text = f"Строка {line}, столбец {column+1}   |   {char_count} символов"
     right_text = f"|  {text_scale}%       |  {line_end}          |  {encoding}            "
     left_label.config(text=left_text)
     right_label.config(text=right_text)
@@ -158,17 +158,17 @@ right_label.pack(side=RIGHT)
 main_menu = Menu(root)
 
 file_menu = Menu(main_menu, tearoff=0)
-file_menu.add_command(label="Новый".ljust(30) + "CTRL+N", command=new_file)
-file_menu.add_command(label="Открыть".ljust(29) + "CTRL+O", command=open_file)
-file_menu.add_command(label="Сохранить".ljust(27) + "CTRL+S", command=save_file)
-file_menu.add_command(label="Сохранить как...".ljust(24) + "CTRL+SHIFT+S", command=save_as)
+file_menu.add_command(label="Новый".ljust(30) + "Ctrl+N", command=new_file)
+file_menu.add_command(label="Открыть".ljust(29) + "Ctrl+O", command=open_file)
+file_menu.add_command(label="Сохранить".ljust(27) + "Ctrl+S", command=save_file)
+file_menu.add_command(label="Сохранить как...".ljust(24) + "Ctrl+Shift+S", command=save_as)
 file_menu.add_separator()
-file_menu.add_command(label="Выход".ljust(31) + "CTRL+Q", command=root.quit)
+file_menu.add_command(label="Выход".ljust(31) + "Ctrl+Q", command=root.quit)
 main_menu.add_cascade(label="Файл", menu=file_menu)
 
 edit_menu = Menu(main_menu, tearoff=0)
-edit_menu.add_command(label="Копировать".ljust(20) + "CTRL+C", command=copy_text, state=DISABLED)
-edit_menu.add_command(label="Вставить".ljust(24) + "CTRL+V", command=paste_text)
+edit_menu.add_command(label="Копировать".ljust(20) + "Ctrl+C", command=copy_text, state=DISABLED)
+edit_menu.add_command(label="Вставить".ljust(24) + "Ctrl+V", command=paste_text)
 edit_menu.add_separator()
 settings_menu = Menu(edit_menu, tearoff=0)
 settings_menu.add_command(label="Выбрать шрифт", command=select_font)

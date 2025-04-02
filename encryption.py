@@ -1,15 +1,26 @@
 import configparser
-import sympy
+import random
 
 CONFIG_FILE = "AmTCD.ini"
 
 def load_key():
     config = configparser.ConfigParser()
     config.read(CONFIG_FILE)
-    return int(config.get("main", "keyuser", fallback="496fd2da03559bb5a0c914e28f98902c"), 16)
+    key = int(config.get("main", "keyuser", fallback="534582719245755984509"), 16)
+    if key % 2 == 0:
+        key += 1
+    return key
+
+def is_prime(n):
+    if n < 2 or (n % 2 == 0 and n != 2):
+        return False
+    return all(n % d for d in range(3, int(n**0.5) + 1, 2))
 
 def generate_prime():
-    return sympy.randprime(2**127, 2**128)
+    while True:
+        num = random.randint(500_000, 1_000_000)
+        if is_prime(num):
+            return num
 
 def xor_cipher(text, key):
     key_str = str(key)

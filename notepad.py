@@ -74,7 +74,7 @@ def save_as_file(file_path):
     global current_file, is_modified
     current_file = file_path
     text = text_area.get("1.0", END).strip()
-    encrypted_text = encryption.encrypt(text)  # Используем новый метод
+    encrypted_text = encryption.encrypt(text)
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(encrypted_text)
     is_modified = False

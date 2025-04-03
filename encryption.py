@@ -7,8 +7,6 @@ def load_key():
     config = configparser.ConfigParser()
     config.read(CONFIG_FILE)
     key = int(config.get("main", "keyuser", fallback="534582719245755984509"), 16)
-    if key % 2 == 0:
-        key += 1
     return key
 
 def is_prime(n):

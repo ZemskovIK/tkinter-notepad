@@ -24,7 +24,7 @@
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/ZemskovIK/AmTCD.git
+   git clone https://github.com/ZemskovIK/tkinter-notepad.git
 2. Установите зависимости (если они требуются):
    ```bash
    pip install -r requirements.txt
